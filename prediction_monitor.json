@@ -1,0 +1,17 @@
+{
+    "model_name": "XGBoost Credit Card Fraud Detector",
+    "monitoring_status": "active",
+    "metrics_monitored": [
+        "prediction_count",
+        "fraud_prediction_rate",
+        "fraud_probability",
+        "data_drift",
+        "precision",
+        "recall",
+        "f1_score",
+        "roc_auc"
+    ],
+    "drift_action": "Trigger model evaluation and retraining when significant drift is detected.",
+    "retraining_strategy": "Monthly scheduled validation with retraining when updated labeled data is available.",
+    "last_updated": "2026-09-28T20:44:13.449603"
+}
