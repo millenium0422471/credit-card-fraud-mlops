@@ -1,0 +1,33 @@
+name: Fraud Model Retraining
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+jobs:
+  retraining-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate retraining script
+        run: |
+          python -m py_compile retrain.py
+
+      - name: Retraining strategy status
+        run: |
+          echo "Retraining pipeline configuration validated."
+          echo "Production retraining requires secure access to updated transaction data."
